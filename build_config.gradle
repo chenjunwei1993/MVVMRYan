@@ -1,0 +1,27 @@
+//打包配置文件
+//应用名称
+String defAppName = "采集"
+//默认包名
+String defPackage = "com.school.caiji"
+String defVersionName = "1.0.0"
+int defVersionCode = 1
+//打包签名信息
+String defKeyAlias = "school"
+String defStorePassword = "18720978270"
+String defKeyPassword = "18720978270"
+String defStoreFile = "../school.jks"
+
+//高德地图
+String defAMapKey = "cd5ffc0ec029d93cded1e3e4e752f095"
+
+ext {
+    appName = defAppName
+    packageName = defPackage
+    versionName = defVersionName
+    versionCode = defVersionCode
+    storeFile = defStoreFile
+    keyAlias = defKeyAlias
+    storePassword = defStorePassword
+    keyPassword = defKeyPassword
+    aMapKey = defAMapKey
+}

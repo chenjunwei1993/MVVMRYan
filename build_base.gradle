@@ -1,0 +1,6 @@
+/**
+ * 之前引用ComBase库的都要引入这个build.gradle 来替换之前运用方式,用于模块之间引用Base的方式，
+ */
+dependencies {
+    api project(':CompBase')
+}

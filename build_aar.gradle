@@ -1,0 +1,6 @@
+//提交完代码，需要在打包服务器执行命令强制更新依赖库：gradle build --refresh-dependencies
+dependencies {
+    /////////////////基础模块/////////////////////
+    compile(name: 'CompBase' + preVersion, ext: 'aar')
+    /////////////////以上需要默认打到配置里面/////////////////////
+}

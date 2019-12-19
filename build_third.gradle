@@ -1,0 +1,40 @@
+dependencies {
+    api "androidx.multidex:multidex:${multidex}"
+
+    //刷新框架 https://github.com/scwang90/SmartRefreshLayout
+    api "com.scwang.smartrefresh:SmartRefreshLayout:${smart_refresh}"
+    api "com.scwang.smartrefresh:SmartRefreshHeader:${smart_refresh}"
+    // tab栏目 https://github.com/hackware1993/MagicIndicator
+    api "com.github.hackware1993:MagicIndicator:${magic_indicator}"
+    // 基础依赖包，必须要依赖 https://github.com/gyf-dev/ImmersionBar
+    api "com.gyf.immersionbar:immersionbar:${immersionbar}"
+    //https://github.com/tbruyelle/RxPermissions
+    api "com.github.tbruyelle:rxpermissions:${rxpermissions}"
+
+    //高德地图
+    api "com.amap.api:location:${amap_location}"
+    api "com.amap.api:3dmap:${amap_3dmap}"
+
+    //rx管理View的生命周期
+    api("com.trello.rxlifecycle3:rxlifecycle:${rxlifecycle}") {
+        exclude group: 'com.android.support'
+    }
+    api("com.trello.rxlifecycle3:rxlifecycle-components:${rxlifecycle}") {
+        exclude group: 'com.android.support'
+    }
+    //rxbinding
+    api("com.jakewharton.rxbinding3:rxbinding:${rxbinding}") {
+        exclude group: 'com.android.support'
+    }
+
+    //recyclerview的databinding套装
+    api("me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${bindingcollectionadapter}") {
+        exclude group: 'com.android.support'
+    }
+    api("me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${bindingcollectionadapter}") {
+        exclude group: 'com.android.support'
+    }
+
+//    api "com.afollestad.material-dialogs:core:${material_dialogs_commons}"
+
+}

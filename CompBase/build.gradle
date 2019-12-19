@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+String moduleName = "CompBase"
+//第三方引用依赖
+apply from: '../build_third.gradle'
+//Maven引用依赖
+apply from: '../build_core.gradle'
+
+repositories {
+    flatDir {
+        dirs 'libs', '../3rd_aars'
+    }
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        buildConfigField "Boolean", "DEBUG_MODE", rootProject.debugMode
+    }
+
+    //忽略校验png格式图片
+    aaptOptions {
+        cruncherEnabled = false
+    }
+    //取消检查
+    lintOptions {
+        abortOnError false
+    }
+    //设置输出aar文件名称
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = moduleName + rootProject.preVersion + '.aar'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    //下面看情况添加，一般不用，添加上面的apply 就可以了
+    kapt {
+        generateStubs = true
+
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: '*.jar', dir: 'libs')
+    //阿里arouter
+    api "com.alibaba:arouter-api:${arouter_api}"
+    kapt "com.alibaba:arouter-compiler:${arouter_compiler}"
+
+    //Google LiveData和ViewModel组件
+    api "android.arch.lifecycle:extensions:${lifecycle}"
+    kapt "android.arch.lifecycle:compiler:${lifecycle}"
+}

@@ -1,0 +1,17 @@
+int defMinSdkVersion = 19
+int defTargetSdkVersion = 28
+int defCompileSdkVersion = 28
+
+String defDebug = "false"
+String defPreVersion = "-201908071345"//模块和组件所用到的版本
+String defBaseDir = 'D:/projects/'
+
+ext {
+    minSdkVersion = defMinSdkVersion
+    targetSdkVersion = defTargetSdkVersion
+    compileSdkVersion = defCompileSdkVersion
+    debugMode = defDebug
+    preVersion = defPreVersion
+    baseDir = defBaseDir
+    aarsDir = defBaseDir + 'aars'
+}

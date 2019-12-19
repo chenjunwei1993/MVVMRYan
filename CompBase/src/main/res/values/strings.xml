@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">CompBase</string>
+    <!-- 崩溃 -->
+    <string name="customactivityoncrash_error_activity_error_occurred_explanation">发生意外错误。\n抱歉，给您带来不便。</string>
+    <string name="customactivityoncrash_error_activity_restart_app">重新启动</string>
+    <string name="customactivityoncrash_error_activity_close_app">关闭程序</string>
+    <string name="customactivityoncrash_error_activity_error_details">错误日志</string>
+    <string name="customactivityoncrash_error_activity_error_details_title">错误详情</string>
+    <string name="customactivityoncrash_error_activity_error_details_close">关闭</string>
+    <string name="customactivityoncrash_error_activity_error_details_copy">复制日志</string>
+    <string name="customactivityoncrash_error_activity_error_details_copied">复制日志</string>
+    <string name="customactivityoncrash_error_activity_error_details_clipboard_label">错误信息</string>
+
+
+    <!-- 刷新列表 -->
+    <string name="smart_empty_tip">没有内容哦～</string>
+    <string name="smart_net_failure_tip">网络不给力</string>
+    <string name="smart_no_net_failure_tip">当前无法连接网络，请更改网络试试</string>
+    <string name="smart_failure_tip">服务器请求失败</string>
+    <string name="smart_click_try">点击重试</string>
+
+    <!-- dialog相关 -->
+    <string name="location_tip">无法获取你的位置信息。请到手机系统的[设置]->[隐私]->[定位服务]中打开定位服务，并允许使用定位服务</string>
+    <string name="confirm">确定</string>
+    <string name="abroad_photo">拍照</string>
+    <string name="abroad_choosephotp">从相册选择</string>
+    <string name="abroad_cancel">取消</string>
+</resources>

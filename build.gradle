@@ -1,0 +1,84 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: 'build_config.gradle'
+apply from: 'build_precfg.gradle'
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases/" }
+        maven { url "http://localhost:8081/repository/viroyal_android_release/" }
+        maven { url 'https://www.jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.1'
+        //kotlin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+    //gradle构建时用utf-8
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs '../3rd_aars'
+        }
+        google()
+        jcenter()
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases/" }
+        maven { url "http://localhost:8081/repository/viroyal_android_release/" }
+        maven { url 'https://www.jitpack.io' }
+    }
+
+}
+
+//强制依赖版本
+subprojects {
+    project.configurations.all {
+        resolutionStrategy.force 'com.android.support:multidex:1.0.2'
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains("multidex")) {
+                details.useVersion "$Support_V7"
+            }
+            if (details.requested.group == 'org.jetbrains.kotlin') {
+                details.useVersion "$kotlin_version"
+            }
+        }
+    }
+}
+
+//删除build和已经生成的aar文件
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+//删除aar目录文件
+tasks.create(name: 'cleanaar') {
+    doLast {
+        delete rootProject.aarsDir
+    }
+}
+
+//迁移子module下所有aar到主工程的aar目录
+tasks.create(name: 'aar') {
+    doLast {
+        rootProject
+                .getSubprojects()
+                .each {
+            def buildPath = it.getBuildDir().absolutePath
+            copy {
+                from(buildPath + '/outputs/aar/') {
+                    include '*.aar'
+                }
+                //拷贝aar文件路径到父级目录MXU4_Android/aars下
+                into rootProject.aarsDir
+            }
+        }
+    }
+}

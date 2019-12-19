@@ -1,0 +1,7 @@
+dependencies {
+    api "com.viroyal.android.core:LibraryImageLoader:${LibraryImageLoader}"
+    api "com.viroyal.android.core:LibraryNetWork:${LibraryNetWork}"
+    api "com.viroyal.android.core:LibraryCoreUtil:${LibraryCoreUtil}"
+    api "com.viroyal.android.core:LibraryGreenDao:${LibraryGreenDao}"
+    api "com.viroyal.android.core:LibraryDownloader:${LibraryDownloader}"
+}
